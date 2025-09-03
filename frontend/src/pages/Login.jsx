@@ -16,8 +16,8 @@ const Signup = () => {
          <input type={show?"text":"password"} placeholder='password' required className='w-full h-full border-none text-[18px] px-[20px] py-[10px] rounded-md ' />
           <span onClick={() => setShow(!show)} className='absolute right-[20px] top-[15px] text-gray-600 cursor-pointer'>{show ? 'Hide' : 'Show'}</span>
        </div>
-        <button className='w-[full] h-[50px] rounded-full bg-[#1dc9fd] mt-[30px] text-white '>Sign In</button>
-        <p className='text-gray-600 text-[16px] mt-[20px] text-center cursor-pointer'>Already have an account? <span className='text-[#1dc9fd] ' onClick={()=>navigate("/login")}>Sign Up</span></p>
+        <button className='w-[full] h-[50px] rounded-full bg-[#1dc9fd] mt-[30px] text-white ' onClick={()=>navigate("/")}>Sign In</button>
+        <p className='text-gray-600 text-[16px] mt-[20px] text-center cursor-pointer'>Already have an account? <span className='text-[#1dc9fd] ' onClick={()=>navigate("/signup")}>Sign Up</span></p>
 
 
       </form>

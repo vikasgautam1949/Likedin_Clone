@@ -82,9 +82,13 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    // setLoading(true);
+    setError("");
     try {
       const result = await axios.post(
         `${serverUrl}/api/auth/signup`,
@@ -93,7 +97,8 @@ const Signup = () => {
           lastName,
           userName,
           email,
-          password
+          password,
+          // setLoading(false)
         },
         { withCredentials: true }
       );
@@ -104,7 +109,9 @@ const Signup = () => {
 
     } catch (error) {
       console.error("Error during signup:", error.response?.data || error.message);
-      alert("Signup failed. Please try again."); // Optional UX improvement
+      setError(error.response?.data?.message || "Signup failed. Please try again.");
+      // setLoading(false);
+      // alert("Signup failed. Please try again."); // Optional UX improvement
     }
   };
 
@@ -166,6 +173,10 @@ const Signup = () => {
           </span>
         </div>
 
+
+ {error &&   <p className='text-center text-red-500'>
+  {error}
+</p>}
         <button
           type='submit'
           className='w-full h-12 rounded-full bg-[#1dc9fd] mt-7 text-white font-semibold'
